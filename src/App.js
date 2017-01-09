@@ -4,6 +4,8 @@ import React from 'react';
 
 const Widget = (props) => <input type="text" onChange={props.update} />
 
+const BootButton = (props) => <button className="btn btn-default">{props.children}</button>
+
 class App extends React.Component {
     constructor() {
         super(); // so this gets the context of this component rather than the parent
@@ -22,6 +24,7 @@ class App extends React.Component {
         // 1st way
         return (
             <div>
+            <BootButton>Whatever</BootButton>
             <Widget update={this.update.bind(this)} />
             <h1 className="myclass">{txt} - {this.state.txt} - {this.state.cat}</h1>
             </div>
