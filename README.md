@@ -43,3 +43,9 @@ In addition to the types built into React.propTypes we can also define our own c
 Event handlers are passed an instance of SyntheticEvent in React. It normalizes the events that can occur in different browsers.
 
 ---
+
+## Get a Reference to Specific Components
+
+When you are using React components you need to be able to access specific references to individual component instances. This is done by defining a **ref**. 
+
+---
