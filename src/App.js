@@ -20,13 +20,15 @@ class App extends React.Component {
     }
 
     render() {
-        let txt = this.props.txt
+        let txt = this.props.txt;
+        let txt3 = this.props.txt3;
         // 1st way
         return (
-            <div>
-            <BootButton>Whatever</BootButton>
+            <div className="container">
+            <BootButton>Whatever button with Bootstrap styles that does nothing</BootButton>
+            <br/>
             <Widget update={this.update.bind(this)} />
-            <h1 className="myclass">{txt} - {this.state.txt} - {this.state.cat}</h1>
+            <h1 className="myclass">{txt} - {txt3} - {this.state.txt} - {this.state.cat}</h1>
             </div>
         )
         // 2nd way, but only can create a single node with JSX
@@ -39,7 +41,15 @@ class App extends React.Component {
 
 App.propTypes = {
     txt: React.PropTypes.string,
-    cat: React.PropTypes.number.isRequired
+    cat: React.PropTypes.number.isRequired,
+    txt3(props, propName, component) {
+        if(!(propName in props)){
+            return new Error(`missing ${propName}`)
+        }
+        if(props[propName].length < 6){
+            return new Error(`${propName} was too short`);
+        }
+    }
 }
 
 App.defaultProps = {
