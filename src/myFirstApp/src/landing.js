@@ -1,8 +1,10 @@
 import React from 'react';
 
-export default Landing;
+export default class Landing extends React.Component {
 
-class Landing extends React.Component {
+    constructor() {
+        super();
+    }
 
     render() {
         return (
@@ -12,4 +14,5 @@ class Landing extends React.Component {
             </div>
         );
     }
+
 }
