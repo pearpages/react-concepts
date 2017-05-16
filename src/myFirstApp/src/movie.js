@@ -1,4 +1,5 @@
 import React from 'react';
+const { string } = React.PropTypes;
 
 export default function Movie(props) {
 
@@ -11,3 +12,9 @@ export default function Movie(props) {
 
 }
 
+Movie.propTypes = {
+    Title: string.isRequired,
+    Year: string.isRequired,
+    imdbID: string.isRequired,
+    Poster: string.isRequired
+}
