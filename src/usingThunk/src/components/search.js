@@ -42,4 +42,7 @@ function mapStateToProps(state) {
     }
 }
 
+// @learn Unrapped is used for testing purposes
+export const Unwrapped = Search;
+
 export default connect(mapStateToProps)(Search);
