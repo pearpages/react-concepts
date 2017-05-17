@@ -1,24 +1,42 @@
 import React from 'react'
-const p = React.PropTypes;
+import MovieCard from './movie-card'
+import {getFromOrigin} from './movies'
 
-Details.propTypes = {
-    movie: p.shape({
-        Title: p.string,
-        Year: p.string,
-        Poster: p.string,
-        Plot: p.string,
-        Actors: p.string
-    })
-};
+export default class Details extends React.Component {
 
-export default function Details(props) {
+    constructor(props) {
+        super(props);
+        this.state = {
+            details: '',
+            disabled: false
+        };
 
-    const { Title, Year, Poster, Plot, Actors } = props.movie;
-    return (<div>
-        <h2>{Title} <span>(Year: {Year})</span></h2>
-        <p>{Actors}</p>
-        <p>{Plot}</p>
-        <img src={Poster} alt={Title} />
-    </div>);
+        this.updateMovie = this.updateMovie.bind(this);
+        this.getMovie = this.getMovie.bind(this);
+    }
+
+    updateMovie() {
+        this.setState({disabled: true});
+        getFromOrigin(this.props.params.id)
+            .then(response => response.text())
+            .then((text) => this.setState({disabled: false,details: JSON.parse(text)}) );
+    }
+
+    getMovie() {
+        if(this.state.details === '') {
+            return this.props.movie;
+        } else {
+            return this.state.details;
+        }
+    }
+
+    render () {
+        return (<div>
+            <button disabled={this.state.disabled} onClick={this.updateMovie} >Refresh from Server</button>
+            <MovieCard
+                movie={this.getMovie()}
+            />
+        </div>);
+    }
 
 }

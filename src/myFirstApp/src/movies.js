@@ -23,3 +23,7 @@ export function getMovie(id) {
         return movie.imdbID === id;
     });
 }
+
+export function getFromOrigin(id) {
+    return window.fetch('http://www.omdbapi.com/?i='+id);
+}
