@@ -1,38 +1,38 @@
 import React from 'react'
 import MovieCard from './movie-card'
-import {getFromOrigin} from '../data/movies'
+import {connect} from 'react-redux'
+import {getOMDBDetails} from '../redux/actionCreators'
 
-export default class Details extends React.Component {
+class Details extends React.Component {
 
     constructor(props) {
         super(props);
-        this.state = {
-            details: '',
-            disabled: false
-        };
+        // this.state = {
+        //     disabled: false
+        // };
 
         this.updateMovie = this.updateMovie.bind(this);
         this.getMovie = this.getMovie.bind(this);
     }
 
     updateMovie() {
-        this.setState({disabled: true});
-        getFromOrigin(this.props.params.id)
-            .then(response => response.text())
-            .then((text) => this.setState({disabled: false,details: JSON.parse(text)}) );
+        // this.setState({disabled: true});
+        this.props.dispatch(getOMDBDetails(this.props.movie.imdbID));
     }
 
     getMovie() {
-        if(this.state.details === '') {
-            return this.props.movie;
+        let aux;
+        if(!this.props.omdbData || this.props.omdbData === {}) {
+            aux = this.props.movie;
         } else {
-            return this.state.details;
+            aux = this.props.omdbData;
         }
+        return aux;
     }
 
     render () {
         return (<div>
-            <button disabled={this.state.disabled} onClick={this.updateMovie} >Refresh from Server</button>
+            <button onClick={this.updateMovie} >Refresh from Server</button>
             <MovieCard
                 movie={this.getMovie()}
             />
@@ -40,3 +40,10 @@ export default class Details extends React.Component {
     }
 
 }
+
+function mapStateToProps(state,ownProps) {
+    const omdbData = state.omdbData[ownProps.movie.imdb] ? state.omdbData[ownProps.show.imdb] : {};
+    return omdbData;
+}
+
+export default connect(mapStateToProps)(Details);
