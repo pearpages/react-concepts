@@ -1,4 +1,4 @@
-import { Search as movies } from '../assets/movies.json';
+import { Search as movies } from './movies.json';
 
 export function filterMovies(pattern) {
     return movies.filter(function filter(movie) {

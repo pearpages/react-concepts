@@ -1,6 +1,6 @@
 import React from 'react'
 import MovieCard from './movie-card'
-import {getFromOrigin} from './movies'
+import {getFromOrigin} from '../data/movies'
 
 export default class Details extends React.Component {
 
