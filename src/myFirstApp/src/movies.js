@@ -1,10 +1,19 @@
 import { Search as movies } from '../assets/movies.json';
 
-export function getMovies(pattern) {
+export function filterMovies(pattern) {
     return movies.filter(function filter(movie) {
         // @learn
         // return movie.Title.match( new RegExp(".*"+pattern+".*","gi"));
         if (pattern === '') return true;
+        return (movie.Title.toUpperCase()+movie.imdbID.toUpperCase()).indexOf(pattern.toUpperCase()) > -1;
+    });
+}
+
+export function searchMovies(pattern) {
+    return movies.filter(function filter(movie) {
+        // @learn
+        // return movie.Title.match( new RegExp(".*"+pattern+".*","gi"));
+        if (pattern === '') return false;
         return (movie.Title.toUpperCase()+movie.imdbID.toUpperCase()).indexOf(pattern.toUpperCase()) > -1;
     });
 }
