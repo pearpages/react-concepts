@@ -10,7 +10,6 @@ export default class Landing extends React.Component {
     render() {
         return (
             <div className="landing">
-                <h1>svideo</h1>
                 <input type="text" placeholder="search" /> <Link to='/search' className="button">or Browse All</Link>
             </div>
         );
