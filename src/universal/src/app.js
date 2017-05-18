@@ -6,7 +6,7 @@ import { filterMovies, searchMovies, getMovie } from './data/movies';
 import Details from './components/details';
 import { Provider } from 'react-redux';
 import store from './redux/store';
-import './app.scss';
+// import './app.scss';
 
 function App(props) {
 
