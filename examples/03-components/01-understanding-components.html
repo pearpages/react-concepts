@@ -1,0 +1,35 @@
+<!-- Summaryzing:
+  * Create a function with a **capital letter**
+  * It recieves props
+  * We need to use children if we want to make it 'html' composable
+-->
+
+<div id="root"></div>
+<script crossorigin src="https://unpkg.com/react@16/umd/react.development.js"></script>
+<script crossorigin src="https://unpkg.com/react-dom@16/umd/react-dom.development.js"></script>
+<script crossorigin  src="https://cdnjs.cloudflare.com/ajax/libs/babel-standalone/6.26.0/babel.js"></script>
+<script type="text/babel">
+const rootElement = document.getElementById('root');
+
+const HelloWorld = <div>Hello World</div>;
+const Message = props => <div>{props.msg}</div>;
+const WithChildren = props => <div>{props.children}</div>;
+
+const element = (
+  <div>
+    <div className="container">
+      {HelloWorld}
+      {HelloWorld}
+    </div>
+
+    <div className="container">
+      {Message({msg: 'This is amazing'})}
+      {React.createElement(Message, {msg: 'Very amazing'})}
+      <Message msg="Goodbye World" />
+      <WithChildren>Using children!!</WithChildren>
+    </div>
+
+  </div>
+);
+ReactDOM.render(element, rootElement);
+</script>
