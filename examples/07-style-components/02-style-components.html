@@ -1,0 +1,57 @@
+<!--
+  In this example we have to pay attention to the use of **spreads** in order to have default values and be able to extend the component props.
+-->
+<div id="root"></div>
+<script crossorigin src="https://unpkg.com/react@16/umd/react.development.js"></script>
+<script crossorigin src="https://unpkg.com/react-dom@16/umd/react-dom.development.js"></script>
+<script crossorigin  src="https://cdnjs.cloudflare.com/ajax/libs/babel-standalone/6.26.0/babel.js"></script>
+<style>
+  .box {
+    border: 1px solid black;
+    height: 120px;
+  }
+  .box--small {
+    width: 60px;
+    height: 60px;
+  }
+  .box--medium {
+    width: 80px;
+    height: 80px;
+  }
+  .box--large {
+    width: 100px;
+    height: 100px;
+  }
+  </style>
+<script type="text/babel">
+function Box({style, size = 'small', className = '', ...rest}) {
+  const sizeClassName = `box--${size}`;
+  return (
+    <div
+      className={`box ${sizeClassName} ${className}`}
+      style={{paddingLeft: 20, ...style}}
+      {...rest}
+    />
+  );
+}
+const element = (
+  <div>
+    <Box
+      style={{backgroundColor: 'lightblue'}}
+      >
+      small box
+    </Box>
+    <Box
+      style={{backgroundColor: 'pink'}}
+      size='medium'>
+      medium box
+    </Box>
+    <Box
+      style={{backgroundColor: 'orange'}}
+      size='large'>
+      large box
+    </Box>
+  </div>
+);
+ReactDOM.render(element, document.getElementById('root'));
+</script>
