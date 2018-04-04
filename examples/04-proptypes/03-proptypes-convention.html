@@ -1,0 +1,33 @@
+<!--
+  The production version of React does not use PropTypes
+  The convention is to use propTypes as a static property of the React Component class
+-->
+<div id="root"></div>
+<script crossorigin src="https://unpkg.com/react@16/umd/react.development.js"></script>
+<script crossorigin src="https://unpkg.com/react-dom@16/umd/react-dom.development.js"></script>
+<script crossorigin src="https://cdnjs.cloudflare.com/ajax/libs/prop-types/15.6.1/prop-types.js"></script>
+<script crossorigin  src="https://cdnjs.cloudflare.com/ajax/libs/babel-standalone/6.26.0/babel.js"></script>
+<script type="text/babel">
+class SayHello extends React.Component {
+  static propTypes = {
+    firstName: PropTypes.string.isRequired,
+    lastName: PropTypes.string.isRequired
+  };
+  render() {
+    const {firstName, lastName} = this.props;
+    return (
+      <div>
+        <p>Check the console to see the errors of the propTypes</p>
+        Hello {firstName} {lastName}!
+      </div>
+    );
+  }
+}
+
+const rootElement = document.getElementById('root');
+
+const element = (
+  <SayHello firstName={true} lastName={true} />
+);
+ReactDOM.render(element, rootElement);
+</script>
