@@ -8,3 +8,7 @@
 ## CodeSandbox
 
 [https://codesandbox.io/](https://codesandbox.io/)
+
+## Thanks to
+
+**@kentcdodds**
