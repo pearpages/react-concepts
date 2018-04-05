@@ -32,10 +32,10 @@ function addGoalAction(goal) {
   }
 }
 
-function removeGoalAction(goal) {
+function removeGoalAction(id) {
   return {
     type: REMOVE_GOAL,
-    goal
+    id
   }
 }
 

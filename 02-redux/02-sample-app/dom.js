@@ -44,10 +44,23 @@ store.subscribe(() => {
   todos.forEach(addTodoToDom);
 });
 
+function createRemoveButton(onClick) {
+  const removeBtn = document.createElement('button');
+  removeBtn.innerHTML = 'X';
+  removeBtn.addEventListener('click', onClick);
+
+  return removeBtn;
+}
+
 function addTodoToDom(todo) {
   const node = document.createElement('li');
   const text = document.createTextNode(todo.name);
+  const removeBtn = createRemoveButton(event => {
+    event.stopPropagation();
+    store.dispatch(removeTodoAction(todo.id));
+  });
   node.appendChild(text);
+  node.appendChild(removeBtn);
   node.style.textDecoration = todo.complete ? 'line-through' : 'none';
   node.addEventListener('click', () => {
     store.dispatch(toggleTodoAction(todo.id));
@@ -59,7 +72,12 @@ function addTodoToDom(todo) {
 function addGoalToDom(goal) {
   const node = document.createElement('li');
   const text = document.createTextNode(goal.name);
+  const removeBtn = createRemoveButton(event => {
+    event.stopPropagation();
+    store.dispatch(removeGoalAction(goal.id));
+  });
   node.appendChild(text);
+  node.appendChild(removeBtn);
   document.getElementById('goals')
     .appendChild(node);
 }
