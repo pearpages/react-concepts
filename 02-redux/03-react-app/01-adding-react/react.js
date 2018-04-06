@@ -3,7 +3,7 @@ class App extends React.Component {
     return (
       <div>
         <Todos store={this.props.store}/>
-        <Goals />
+        <Goals store={this.props.store}/>
       </div>
     );
   }
@@ -46,10 +46,26 @@ class Todos extends React.Component {
 }
 
 class Goals extends React.Component {
+  input;
+  addItem = (e) => {
+    e.preventDefault();
+    const name = this.input.value;
+    this.input.value = '';
+    this.props.store.dispatch(addGoalAction({
+      id: generateId(),
+      name
+    }));
+  }
   render() {
     return (
       <div>
         <h2>Goals List</h2>
+        <input
+          type='text'
+          placeholder='Add Goal'
+          ref={(input) => this.input = input}
+        />
+        <button onClick={this.addItem}>Add Goal</button>
         <List />
       </div>
     );
