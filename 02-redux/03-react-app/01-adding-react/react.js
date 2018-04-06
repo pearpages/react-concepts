@@ -2,8 +2,8 @@ class App extends React.Component {
   render() {
     return (
       <div>
-        <Todos store={this.props.store}/>
-        <Goals store={this.props.store}/>
+        <Todos />
+        <Goals />
       </div>
     );
   }
@@ -18,27 +18,10 @@ function List(props) {
 }
 
 class Todos extends React.Component {
-  input;
-  addItem = (e) => {
-    e.preventDefault();
-    const name = this.input.value;
-    this.input.value = '';
-    this.props.store.dispatch(addTodoAction({
-      id: generateId(),
-      name,
-      complete: false
-    }));
-  }
   render() {
     return (
       <div>
-        <h2>Todo List</h2>
-        <input
-          type='text'
-          placeholder='Add Todo'
-          ref={(input) => this.input = input}
-        />
-        <button onClick={this.addItem}>Add Todo</button>
+        <h2>TODOS</h2>
         <List />
       </div>
     );
@@ -46,26 +29,10 @@ class Todos extends React.Component {
 }
 
 class Goals extends React.Component {
-  input;
-  addItem = (e) => {
-    e.preventDefault();
-    const name = this.input.value;
-    this.input.value = '';
-    this.props.store.dispatch(addGoalAction({
-      id: generateId(),
-      name
-    }));
-  }
   render() {
     return (
       <div>
-        <h2>Goals List</h2>
-        <input
-          type='text'
-          placeholder='Add Goal'
-          ref={(input) => this.input = input}
-        />
-        <button onClick={this.addItem}>Add Goal</button>
+        <h2>GOALS</h2>
         <List />
       </div>
     );
@@ -73,6 +40,6 @@ class Goals extends React.Component {
 }
 
 ReactDOM.render(
-  <App store={store}/>,
+  <App />,
   document.getElementById('app')
 );

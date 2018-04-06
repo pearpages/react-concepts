@@ -76,17 +76,11 @@ function checker(store) {
   return function (next) {
     return function (action) {
 
-      let hasBitcoin = false;
-      switch (action.type) {
-        case ADD_TODO:
-          hasBitcoin = containsBitcoin(action.todo.name);
-        break;
-        case ADD_GOAL:
-          hasBitcoin = containsBitcoin(action.goal.name);
-        break;
+      if ([ADD_TODO, ADD_GOAL].includes(action.type) && containsBitcoin(action.todo.name)) {
+        return alert('Nope. That is a bad idea.');
       }
 
-      return hasBitcoin ? alert('Nope. That is a bad idea.') : next(action);
+      return next(action);
     }
   }
 }
