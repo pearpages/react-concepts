@@ -1,0 +1,28 @@
+<html>
+
+<head>
+  <title>Todos/Goals</title>
+  <script src='https://unpkg.com/react@16.3.0-alpha.1/umd/react.development.js'></script>
+  <script src='https://unpkg.com/react-dom@16.3.0-alpha.1/umd/react-dom.development.js'></script>
+  <script src='https://unpkg.com/babel-standalone@6.15.0/babel.min.js'></script>
+  <script crossorigin src="https://cdnjs.cloudflare.com/ajax/libs/redux/3.7.2/redux.js"></script>
+  <script src="./api.js"></script>
+</head>
+
+<body>
+
+  <h1>React</h1>
+  <div id='app'></div>
+
+  <!--Order DOES matter -->
+  <script type="text/babel" src="./store/async.js"></script>
+  <script type="text/babel" src="./store/goals.js"></script>
+  <script type="text/babel" src="./store/todos.js"></script>
+  <script type="text/babel" src="./store/store.js"></script>
+  <script type="text/babel" src="./app/shared.js"></script>
+  <script type="text/babel" src="./app/goals.js"></script>
+  <script type="text/babel" src="./app/todos.js"></script>
+  <script type="text/babel" src="./app/app.js"></script>
+</body>
+
+</html>
