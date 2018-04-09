@@ -1,14 +1,3 @@
-# Connect
-
-Render any component, passing that component any data it needs from the store.
-
-```js
-const ConnectedApp = connect((state) => ({
-  loading: state.loading
-}))(App);
-```
-
-```js
 function connect(mapStateToProps) {
   return (Component) => {
     class Receiver extends React.Component {
@@ -40,4 +29,3 @@ function connect(mapStateToProps) {
     return ConnectedComponent;
   };
 }
-```
