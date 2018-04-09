@@ -27,3 +27,10 @@ const store = Redux.createStore(Redux.combineReducers({
   goals,
   loading
 }), Redux.applyMiddleware(ReduxThunk.default, checker, logger));
+
+ReactDOM.render(
+  <ReactRedux.Provider store={store}>
+    <ConnectedApp />
+  </ReactRedux.Provider>,
+  document.getElementById('app')
+);
