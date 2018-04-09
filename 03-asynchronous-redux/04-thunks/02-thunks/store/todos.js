@@ -34,6 +34,29 @@ function handleDeleteTodo(todo) {
   }
 }
 
+function handleAddTodo(name, callback) {
+  return (dispatch) => {
+    return API.saveTodo(name)
+      .then((todo) => {
+        dispatch(addTodoAction(todo));
+        callback();
+      })
+      .catch(() => alert('There was an error. Try again.'));
+
+  }
+}
+
+function handleToggle(id) {
+  return (dispatch) => {
+    dispatch(toggleTodoAction(id));
+    return API.saveTodoToggle(id)
+      .catch(() => {
+        dispatch(toggleTodoAction(id));
+        alert('An error occurred. Try again.');
+      });
+  }
+}
+
 // Reducer function
 function todos(state = [], action) {
   switch (action.type) {
