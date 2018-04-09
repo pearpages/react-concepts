@@ -1,3 +1,5 @@
+import { ADD_TODO, ADD_GOAL } from '../actions';
+
 export default function checker(store) {
   const containsBitcoin = (name) => {
     return name.toLowerCase().indexOf('bitcoin') !== -1;

@@ -20,17 +20,3 @@ export function handleInitialData() {
     });
   };
 }
-
-// TODO: remove from here
-const store = Redux.createStore(Redux.combineReducers({
-  todos,
-  goals,
-  loading
-}), Redux.applyMiddleware(ReduxThunk.default, checker, logger));
-
-ReactDOM.render(
-  <ReactRedux.Provider store={store}>
-    <ConnectedApp />
-  </ReactRedux.Provider>,
-  document.getElementById('app')
-);
