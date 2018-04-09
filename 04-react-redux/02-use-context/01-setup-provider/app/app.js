@@ -15,14 +15,28 @@ class App extends React.Component {
     }
     return (
       <div>
-        <Todos todos={todos} store={store}/>
-        <Goals goals={goals} store={store}/>
+        <Todos todos={todos} dispatch={store.dispatch}/>
+        <Goals goals={goals} dispatch={store.dispatch}/>
       </div>
     );
   }
 }
 
+class ConnectedApp extends React.Component {
+  render() {
+    return (
+      <Context.Consumer>
+        {(store) => (
+          <App store={store} />
+        )}
+      </Context.Consumer>
+    );
+  }
+}
+
 ReactDOM.render(
-  <App store={store}/>,
+  <Provider store={store}>
+    <ConnectedApp />
+  </Provider>,
   document.getElementById('app')
 );

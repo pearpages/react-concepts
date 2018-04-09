@@ -3,18 +3,18 @@ class Todos extends React.Component {
   addItem = (e) => {
     e.preventDefault();
 
-    this.props.store.dispatch(handleAddTodo(
+    this.props.dispatch(handleAddTodo(
       this.input.value,
       () => this.input.value = ''
     ));
   }
 
   removeItem = (todo) => {
-    this.props.store.dispatch(handleDeleteTodo(todo));
+    this.props.dispatch(handleDeleteTodo(todo));
   };
 
   toggleItem = (id) => {
-    this.props.store.dispatch(handleToggle(id));
+    this.props.dispatch(handleToggle(id));
   };
 
   render() {
