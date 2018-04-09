@@ -19,13 +19,13 @@ class App extends React.Component {
   }
 }
 
-const ConnectedApp = connect((state) => ({
+const ConnectedApp = ReactRedux.connect((state) => ({
   loading: state.loading
 }))(App);
 
 ReactDOM.render(
-  <Provider store={store}>
+  <ReactRedux.Provider store={store}>
     <ConnectedApp />
-  </Provider>,
+  </ReactRedux.Provider>,
   document.getElementById('app')
 );

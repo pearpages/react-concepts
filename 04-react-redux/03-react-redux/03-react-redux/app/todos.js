@@ -37,6 +37,6 @@ class Todos extends React.Component {
   }
 }
 
-const ConnectedTodos = connect((state) => ({
+const ConnectedTodos = ReactRedux.connect((state) => ({
   todos: state.todos
 }))(Todos);

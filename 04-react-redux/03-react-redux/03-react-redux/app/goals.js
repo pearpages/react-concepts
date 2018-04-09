@@ -29,6 +29,6 @@ class Goals extends React.Component {
   }
 }
 
-const ConnectedGoals = connect((state) => ({
+const ConnectedGoals = ReactRedux.connect((state) => ({
   goals: state.goals
 }))(Goals);
